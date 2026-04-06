@@ -24,6 +24,7 @@
             justify-content: center;
             font-size: 30px;
             position: absolute;
+            cursor: pointer;
         }
         @keyframes expansion{
             0%{transform: scale(1);}
@@ -34,11 +35,19 @@
 </head>
 <body>
     <div class="shikaku" id="shikaku"></div>
+    <div id="area"></div>
     <script>
         const shi = document.getElementById("shikaku")
-        shi.innerText = "お使いのデバイスはウイルスに感染しました"
+        const area = document.getElementById("area")
+        shi.innerText = `お使いのデバイスはウイルスに感染しました
+            対処方法をクリックして確認してください
+            `
         shi.style.left = "20%"
         shi.style.top = "20%"
+        shi.onclick = ()=>{
+            alert("今すぐシャットダウンをしてください")
+            area.innerHTML = "<h1>ファイルが消されています。急いでください</h1>"
+        }
     </script>
 </body>
 </html>
