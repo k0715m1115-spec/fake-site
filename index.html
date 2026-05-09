@@ -18,7 +18,7 @@
             height: 200px;
             background-color: white;
             color: rgb(123, 82, 255);
-            animation: expansion 3s infinite ease-in-out;
+            animation: expansion 1s infinite ease-in-out;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -28,7 +28,7 @@
         }
         @keyframes expansion{
             0%{transform: scale(1);}
-            50%{transform: scale(1.2);}
+            50%{transform: scale(1.4);}
             
         }
     </style>
@@ -46,7 +46,21 @@
         shi.style.top = "20%"
         shi.onclick = ()=>{
             alert("今すぐシャットダウンをしてください")
-            area.innerHTML = "<h1>ファイルが消されています。急いでください(噓でーす)</h1>"
+            area.innerHTML = "<h1>ファイルが消されています。急いでください(噓)</h1>"
+            shi.style.display ="none"
+            setTimeout(() => {
+                area.innerHTML += "<h1>個人情報が漏洩しています</h1>"
+                area.innerHTML += "<h1>ウイルスが拡散しています</h1>"
+                area.innerHTML += "<h1>デバイスが破壊されました！お疲れ様でした☻</h1>"
+                }, 2000);
+            const body = document.body
+            const colors = ["green","yellow","pink"]
+            let index = 0
+            setInterval(() => {
+                body.style.backgroundColor = colors[index]
+                index = (index + 1) % colors.length;
+            }, 593);
+            
         }
     </script>
 </body>
