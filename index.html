@@ -67,13 +67,17 @@
         shi.onclick = ()=>{
             alert("今すぐシャットダウンをしてください");
             shi.style.display ="none";
-            
+            for(let i = 1; i <= 3; i++){
+                console.log("デバイスが再起不能状態になります")
+            }
+            area.innerText = "再起不能になるまであと30秒"
             setTimeout(() => {
                 area.innerHTML = "<h1>ファイルが消されています</h1>";
                 area.innerHTML += "<h1>個人情報が抜き取られています</h1>";
                 area.innerHTML += "<h1>下の方の対処方法のところをクリックしてください</h1>";
 
                 shi2.style.display = "flex";
+                shi2.style.display = "block";
                 shi2.innerText = "対処方法";   
             }, 3000);
         };
