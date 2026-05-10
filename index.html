@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>windowsの警告
-    </title>
+    <title>windowsの警告</title>
     <style>
         body{
             padding: 10px 10px;
             background-color: red;
-            width: 1000px;
-            height: 1000px;
+            width: 100vw;
+            height: 1200px;
+            transition: background-color 0.3s;
         }
         h1{
             color: black;
             font-size: 50px;
         }
         .shikaku{
-            width: 800px;
+            width: 60vw;
             height: 200px;
             background-color: white;
             color: rgb(123, 82, 255);
@@ -26,11 +26,11 @@
             align-items: center;
             justify-content: center;
             font-size: 30px;
-            position: absolute;
+            transform: translate(-50%,-50%);
             cursor: pointer;
         }
         .shikaku2{
-            width: 400px;
+            width: 80vw;
             height: 200px;
             background-color: rgb(176, 93, 93);
             position: absolute;
@@ -57,8 +57,8 @@
         shi.innerText = `お使いのデバイスはウイルスに感染しました
             対処方法をクリックして確認してください
             `
-        shi.style.left = "20%"
-        shi.style.top = "20%"
+        shi.style.left = "50%"
+        shi.style.top = "50%"
         const shi2 = document.getElementById("shikaku2")
         shi2.style.display = "none"
 
@@ -66,18 +66,14 @@
 
         shi.onclick = ()=>{
             alert("今すぐシャットダウンをしてください")
-            area.innerHTML = "<h1>ファイルが消されています。急いでください(噓)</h1>"
             shi.style.display ="none"
             const body = document.body
-            const colors = ["green","yellow"]
-            let index = 0
             setTimeout(() => {
-                body.style.backgroundColor = colors[index]
-                index = (index + 1) % colors.length;
-                area.innerHTML = "<h1>個人情報が漏洩しています</h1>"
-                area.innerHTML = "<h1>デバイスが破壊されました☻</h1>"
-            }, 2000);
-
+                area.innerHTML = "ファイルが消されています"
+                area.innerHTML += "個人情報が抜き取られています"
+                area.innerHTML += "下の方の対処方法のところをクリックしてください"
+            }, 3000);
+        })
             // shikaku2の挙動
 
             shi2.innerText = "対処方法"
