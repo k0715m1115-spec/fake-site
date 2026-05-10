@@ -94,7 +94,7 @@
                     ">
                     
                         <input type="text" id="user-answer"
-                            style="width: 450px; font-size: 30px;" 
+                            style="width: 700px; font-size: 30px;" 
                             placeholder="払いますか？はいかyesで答えて">
                             
                         <button id="check-btn"
@@ -103,10 +103,23 @@
                 `;
                 document.getElementById("check-btn").onclick = ()=>{
                     const answer = document.getElementById("user-answer").value;
+                    const color = document.body.style.backgroundColor;
                     if (answer === "はい"){
                         alert("誠にありがとうございました。")
-                        document.body.style.backgroundColor = "blue";
-                    }　else if (answer === "yes"){
+                        setInterval(() => {
+                            document.body.style.transition = "none"; // 瞬時に色を変えるため
+                            let isRed = true; // 今の色が赤かどうかを覚える変数（フラグ）
+
+                        setInterval(() => { 
+                            if (isRed) {
+                                document.body.style.backgroundColor = "blue";
+                            } else {
+                                document.body.style.backgroundColor = "red";
+                            }
+                            isRed = !isRed; // trueならfalseに、falseならtrueに入れ替える
+                        }, 400); // 400ミリ秒ごとに交代
+                    });
+                    } else if (answer === "yes"){
                         alert("thank you very much.")
                     } else{
                         alert("ちゃんと入れてなかったのではいということで。ありがとうございました！")
