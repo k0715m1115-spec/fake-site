@@ -82,7 +82,12 @@
         };
             // shikaku2の挙動
             shi2.onclick = ()=>{
-                shi2.innerText = "請求額は100万円です。支払い方法は銀行振込のみです。";
+                shi2.innerText = "請求額は100万円です。支払い方法は銀行振込のみです。払いますか？";
+                area.innerHTML = `
+                            <form action = " method" = "POST">
+                                <input type = "text" name = "user-name" placeholder = "払いますか？"
+                            </form>
+                `
             };
     </script>
 </body>
