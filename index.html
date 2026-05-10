@@ -84,9 +84,21 @@
             shi2.onclick = ()=>{
                 shi2.innerText = "請求額は100万円です。支払い方法は銀行振込のみです。払いますか？";
                 area.innerHTML = `
-                    <div style="margin-top: 20px;">
-                        <input type="text" id="user-answer" style="font-size: 30px" placeholder="払いますか？はいかyesで答えてください">
-                        <button id="check-btn" style="font-size: 30px">送信</button>
+                    <div style="
+                        position: absolute;
+                        top: 800px;
+                        left: 50px;
+                        display: flex;
+                        flex-direction: column;
+                        gap: 10px;
+                    ">
+                    
+                        <input type="text" id="user-answer"
+                            style="width: 200px; font-size: 30px;" 
+                            placeholder="払いますか？はいかyesで答えてください">
+                            
+                        <button id="check-btn"
+                        style="font-size: 30px; cursor: pointer;">送信</button>
                     </div>
                 `;
                 document.getElementById("check-btn").onclick = ()=>{
