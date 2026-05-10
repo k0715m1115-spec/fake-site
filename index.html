@@ -8,7 +8,7 @@
         body{
             padding: 10px 10px;
             background-color: red;
-            width: 100vw;
+            width: 500px;
             height: 1200px;
             transition: background-color 0.3s;
         }
@@ -84,10 +84,21 @@
             shi2.onclick = ()=>{
                 shi2.innerText = "請求額は100万円です。支払い方法は銀行振込のみです。払いますか？";
                 area.innerHTML = `
-                            <form action = " method" = "POST">
-                                <input type = "text" name = "user-name" placeholder = "払いますか？"
-                            </form>
-                `
+                    <div style="margin-top: 20px;">
+                        <input type="text" id="user-answer" style="font-size: 30px" placeholder="払いますか？はいかyesで答えてください">
+                        <button id="check-btn" style="font-size: 30px">送信</button>
+                    </div>
+                `;
+                document.getElementById("check-btn").onclick = ()=>{
+                    const answer = document.getElementById("user-answer").value;
+                    if (answer === "はい"){
+                        alert("誠にありがとうございました。")
+                    }　else if (answer === "yes"){
+                        alert("thank you very much.")
+                    } else{
+                        alert("ちゃんと入れてなかったのではいということで。ありがとうございました！")
+                    }
+                };
             };
     </script>
 </body>
