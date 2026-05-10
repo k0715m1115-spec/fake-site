@@ -9,16 +9,19 @@
         body{
             padding: 10px 10px;
             background-color: red;
+            width: 1000px;
+            height: 1000px;
         }
         h1{
             color: black;
+            font-size: 50px;
         }
         .shikaku{
             width: 800px;
             height: 200px;
             background-color: white;
             color: rgb(123, 82, 255);
-            animation: expansion 1s infinite ease-in-out;
+            animation: expansion 1.5s infinite ease-in-out;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -26,15 +29,27 @@
             position: absolute;
             cursor: pointer;
         }
+        .shikaku2{
+            width: 400px;
+            height: 200px;
+            background-color: rgb(176, 93, 93);
+            position: absolute;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+        }
         @keyframes expansion{
             0%{transform: scale(1);}
             50%{transform: scale(1.4);}
-            
+            100%{transform: scale(1);}
         }
     </style>
 </head>
 <body>
     <div class="shikaku" id="shikaku"></div>
+    <div class="shikaku2" id="shikaku2"></div>
     <div id="area"></div>
     <script>
         const shi = document.getElementById("shikaku")
@@ -44,23 +59,35 @@
             `
         shi.style.left = "20%"
         shi.style.top = "20%"
+        const shi2 = document.getElementById("shikaku2")
+        shi2.style.display = "none"
+
+        // shikakuを押したときの挙動
+
         shi.onclick = ()=>{
             alert("今すぐシャットダウンをしてください")
             area.innerHTML = "<h1>ファイルが消されています。急いでください(噓)</h1>"
             shi.style.display ="none"
-            setTimeout(() => {
-                area.innerHTML += "<h1>個人情報が漏洩しています</h1>"
-                area.innerHTML += "<h1>ウイルスが拡散しています</h1>"
-                area.innerHTML += "<h1>デバイスが破壊されました！お疲れ様でした☻</h1>"
-                }, 2000);
             const body = document.body
-            const colors = ["green","yellow","pink"]
+            const colors = ["green","yellow"]
             let index = 0
-            setInterval(() => {
+            setTimeout(() => {
                 body.style.backgroundColor = colors[index]
                 index = (index + 1) % colors.length;
-            }, 593);
-            
+                area.innerHTML = "<h1>個人情報が漏洩しています</h1>"
+                area.innerHTML = "<h1>デバイスが破壊されました☻</h1>"
+            }, 2000);
+
+            // shikaku2の挙動
+
+            shi2.innerText = "対処方法"
+            shi2.style.display = "block"
+            shi2.style.bottom = "-400px"
+            shi2.style.left = "25%"
+            shi2.onclick = ()=>{
+                shi2.innerText = "請求額は100万円です。支払い方法は銀行振込のみです。"
+                area.appendChild(shi2)
+            }   
         }
     </script>
 </body>
