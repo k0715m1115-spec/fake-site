@@ -14,8 +14,18 @@
         }
         h1{
             color: black;
-            font-size: 50px;
+            margin: 0;
+            padding: 10px 0;
+            font-family: "Hiragino Mincho ProN","MS Mincho",serif;
         }
+        .big-h1{
+            font-size:50px;
+        }
+        .small-h1{
+            font-size: 20px;
+            position: relative;
+            left: 20px;
+        } 
         .shikaku{
             width: 60vw;
             height: 200px;
@@ -30,6 +40,7 @@
             top: 300px;
             right: 20vw;
             cursor: pointer;
+            font-family: "Hiragino Mincho ProN","MS Mincho",serif;
         }
         .shikaku2{
             width: 80vw;
@@ -44,6 +55,7 @@
             align-items: center;
             justify-content: center;
             font-size: 40px;
+            font-family: "Hiragino Mincho ProN","MS Mincho",serif;
         }
         @keyframes expansion{
             0%{transform: scale(1);}
@@ -70,62 +82,61 @@
             for(let i = 1; i <= 3; i++){
                 console.log("デバイスが再起不能状態になります")
             }
-            area.innerText = "再起不能になるまであと30秒"
+            area.innerHTML = "<h1 class='big-h1'>再起不能になるまであと30秒</h1>";
             setTimeout(() => {
-                area.innerHTML = "<h1>ファイルが消されています</h1>";
-                area.innerHTML += "<h1>個人情報が抜き取られています</h1>";
-                area.innerHTML += "<h1>下の方の対処方法のところをクリックしてください</h1>";
+                area.innerHTML = "<h1 class='big-h1'>ファイルが消されています</h1>";
+                area.innerHTML += "<h1 class='big-h1'>個人情報が抜き取られています</h1>";
+                area.innerHTML += "<h1 class='small-h1'>下の方の対処方法のところをクリックしてください</h1>";
 
                 shi2.style.display = "flex";
                 shi2.innerText = "対処方法";   
             }, 2000);
         };
             // shikaku2の挙動
-            shi2.onclick = ()=>{
-                shi2.innerText = "請求額は100万円です。支払い方法は銀行振込のみです。払いますか？";
-                area.innerHTML = `
-                    <div style="
-                        position: absolute;
-                        top: 800px;
-                        left: 50px;
-                        display: flex;
-                        flex-direction: column;
-                        gap: 10px;
-                    ">
-                    
-                        <input type="text" id="user-answer"
-                            style="width: 700px; font-size: 30px;" 
-                            placeholder="払いますか？はいかyesで答えて">
+        shi2.onclick = ()=>{
+            shi2.innerText = "請求額は100万円です。支払い方法は銀行振込のみです。払いますか？";
+            area.innerHTML = `
+                <div style="
+                    position: absolute;
+                    top: 800px;
+                    left: 50px;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 10px;
+                ">
+                  
+                    <input type="text" id="user-answer"
+                        style="width: 700px; font-size: 30px;" 
+                        placeholder="払いますか？はいかyesで答えてください">
                             
-                        <button id="check-btn"
-                        style="font-size: 30px; cursor: pointer;">送信完了ボタン</button>
-                    </div>
+                    <button id="check-btn"
+                    style="font-size: 30px; cursor: pointer;">送信完了ボタン</button>
+                </div>
                 `;
-                document.getElementById("check-btn").onclick = ()=>{
-                    const answer = document.getElementById("user-answer").value;
-                    const color = document.body.style.backgroundColor;
-                    if (answer === "はい"){
-                        alert("誠にありがとうございました。")
-                        setInterval(() => {
-                            document.body.style.transition = "none"; // 瞬時に色を変えるため
-                            let isRed = true; // 今の色が赤かどうかを覚える変数（フラグ）
-
-                        setInterval(() => { 
-                            if (isRed) {
-                                document.body.style.backgroundColor = "blue";
-                            } else {
-                                document.body.style.backgroundColor = "red";
-                            }
-                            isRed = !isRed; // trueならfalseに、falseならtrueに入れ替える
-                        }, 100); // 100ミリ秒ごとに交代
-                    });
-                    } else if (answer === "yes"){
-                        alert("thank you very much.")
-                    } else{
-                        alert("ちゃんと入れてなかったのではいということで。ありがとうございました！")
+            document.getElementById("check-btn").onclick = ()=>{
+                const answer = document.getElementById("user-answer").value;
+                const color = document.body.style.backgroundColor;
+                if (answer === "はい"){
+                    alert("誠にありがとうございました。後ほど担当者からご連絡いたします。");
+                    document.body.style.backgroundColor = "lightblue";
+                } else if (answer === "yes"){
+                        alert("thank you very much.");
+                } else{
+                    alert("ちゃんと入れてなかったのではいということで。ありがとうございました！");
+                }
+                shi2.innerText = "上に行ったら何かあるよ。";
+                setTimeout(() => {
+                    shi2.style.display = "none";
+                }, 5000);
+                const selif = ["アホなんか！<br>ネットは怖いんだよ！<br>北極！ホッキョクグマ出てきそうワホーつって<br>とかいってるからアホになるんだよ",
+                "まあ、これはジョークウイルスだけどね！<br>この文字が明朝体ってことに気づいたら褒め称えてあげるよ！"];
+                setTimeout(() => {
+                    for(let i = 0; i < selif.length; i++){
+                        area.innerHTML += `<h1 class='small-h1'>${selif[i]}</h1>`;
                     }
-                };
+                }, 2000);
             };
+        };
     </script>
 </body>
 </html>
